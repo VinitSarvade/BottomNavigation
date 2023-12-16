@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import PropTypes from "prop-types";
 import "./bottom-bar.scss";
 
 const NAV = [
@@ -32,7 +33,9 @@ const NAV = [
 export default function BottomBar(props) {
   const [activeKey, setActiveKey] = useState(NAV[0].key);
 
-  const { variant = "default" } = props;
+
+  const { variant = "floating" } = props;
+
 
   const setKey = (key) => () => {
     setActiveKey(key);
@@ -60,3 +63,8 @@ export default function BottomBar(props) {
     </nav>
   );
 }
+
+
+BottomBar.propTypes = {
+  variant: PropTypes.oneOf('floating', 'underline')
+};
